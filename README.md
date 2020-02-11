@@ -1,3 +1,3 @@
 # todo
 
-some text add for check how branches work
+some text add in master for check how branches work 
