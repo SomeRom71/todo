@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 import List from '../components/List';
-import { addTodo } from '../actions/index';
+import TodoForm from '../components/TodoForm';
+import { addTodo, deleteTodo } from '../actions/index';
 
 class App extends Component {
-  constructor(){
-    super()
-  }
-
   render() {
-    const { todoList, addTodoAction } = this.props;
-    debugger;
+    const { todoList, addTodoAction, deleteTodoAction } = this.props;
     return (
       <>
-        <List todoList={todoList} addTodoAction={addTodoAction} />
+        <TodoForm addTodoAction={addTodoAction} />
+        <List todoList={todoList} deleteTodoAction={deleteTodoAction} />
       </>
     )
   }
@@ -29,6 +26,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return{
     addTodoAction: todo => dispatch(addTodo(todo)),
+    deleteTodoAction: todoIndex => dispatch(deleteTodo(todoIndex)),
   }
 }
 

@@ -4,3 +4,10 @@ export function addTodo(todo) {
     payload: todo,
   }
 }
+
+export function deleteTodo(todoIndex) {
+  return {
+    type: 'DELETE_TODO',
+    payload: todoIndex,
+  }
+}

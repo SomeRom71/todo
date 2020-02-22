@@ -5,7 +5,11 @@ export const initialState = {
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_TODO':
-      return { ...state, todo: action.payload }
+      const todoListAdd = state.todoList.concat([action.payload]);
+      return { ...state, todoList: todoListAdd}
+    case 'DELETE_TODO':
+      const todoListDelete = state.todoList.filter((item, index) => action.payload != index);
+      return { ...state, todoList: todoListDelete}
 
     default:
       return state
