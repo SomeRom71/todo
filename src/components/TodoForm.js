@@ -6,6 +6,7 @@ const TodoForm = props => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const getNewTodo = formData.get('todoName').trim();
+    e.target.value = '';
     return props.addTodoAction(getNewTodo);
   }
 

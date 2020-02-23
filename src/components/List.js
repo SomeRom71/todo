@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const List = props => {
-
-  const deleteItem = (e) => {
-    const index = e.target.getAttribute('index');
-    return props.deleteTodoAction(index);
+class List extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      itemName: ''
+    }
   }
 
-  return (
-    <>
+  deleteItem = (index) => this.props.deleteTodoAction(index);
+
+  changeItem = (index, e) => {
+    this.setState({
+      itemName: e.target.value,
+    })
+    this.props.changeTodoAction(e.target.value, index);
+  }
+
+  render() {
+    const { todoList } = this.props
+    return (
       <ul>
-        {props.todoList.map((item, index) => {
+        {todoList.map((item, index) => {
           return(
-            <li key={index}>{item}<button index={index} onClick={deleteItem}>Delete</button></li>
+            <li key={index}><input type="text" value={item} onChange={(e) => this.changeItem(index, e)} /><button onClick={() => this.deleteItem(index)}>Delete</button></li>
           )
         })}
       </ul>
-    </>
-  )
+    )
+  }
 }
 
 export default List;

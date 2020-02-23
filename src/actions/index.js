@@ -11,3 +11,10 @@ export function deleteTodo(todoIndex) {
     payload: todoIndex,
   }
 }
+
+export function changeTodo(value, index) {
+  return {
+    type: 'CHANGE_TODO',
+    payload: {value, index},
+  }
+}
