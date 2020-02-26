@@ -7,8 +7,12 @@ const TodoForm = props => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const getNewTodo = formData.get('todoName').trim();
-    e.target.reset();
-    return props.addTodoAction(getNewTodo);
+    if (getNewTodo.length > 0) {
+      e.target.reset();
+      return props.addTodoAction(getNewTodo);
+    } else {
+      alert('Field is empty')
+    }
   }
 
   return(

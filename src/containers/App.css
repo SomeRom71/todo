@@ -13,9 +13,21 @@ ul{
   border-radius: 10px;
   padding: 0 15px;
   list-style-type: none;
+  margin-bottom: 10px;
 }
 
 .todo-input{
   margin: 5px;
   border: none;
+  width: 100%;
+}
+
+.no-todo{
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
+
+.change-btn{
+  margin-right: 10px;
 }

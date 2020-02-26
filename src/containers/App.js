@@ -12,7 +12,8 @@ class App extends Component {
     return (
       <div className="container">
         <TodoForm addTodoAction={addTodoAction} />
-        <List todoList={todoList} deleteTodoAction={deleteTodoAction} changeTodoAction={changeTodoAction} changeStateTodo={changeStateAction}/>
+        <hr />
+        {todoList.length > 0 ? <List todoList={todoList} deleteTodoAction={deleteTodoAction} changeTodoAction={changeTodoAction} changeStateTodo={changeStateAction}/> : <div className="no-todo">Sorry, todo's not found</div>}
       </div>
     )
   }

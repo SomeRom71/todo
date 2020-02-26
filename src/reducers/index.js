@@ -2,9 +2,8 @@ export const initialState = {
   todoList: [
     {name : 'выучи', isDone: false},
     {name : 'редакс', isDone: false},
-    {name : 'тупой', isDone: false},
-    {name : 'мешок', isDone: false},
-    {name : 'говна', isDone: false}
+    {name : 'кусок', isDone: false},
+    {name : 'мяса', isDone: false}
   ]
 }
 
