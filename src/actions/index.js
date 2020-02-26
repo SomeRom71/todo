@@ -18,3 +18,10 @@ export function changeTodo(value, index) {
     payload: {value, index},
   }
 }
+
+export function changeStateTodo(todoIndex) {
+  return {
+    type: 'CHANGE_STATE_TODO',
+    payload: todoIndex,
+  }
+}

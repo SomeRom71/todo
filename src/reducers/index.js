@@ -1,19 +1,42 @@
 export const initialState = {
-  todoList: ['Выучи', 'редакс', 'тупой', 'мешок', 'говна']
+  todoList: [
+    {name : 'выучи', isDone: false},
+    {name : 'редакс', isDone: false},
+    {name : 'тупой', isDone: false},
+    {name : 'мешок', isDone: false},
+    {name : 'говна', isDone: false}
+  ]
 }
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_TODO':
-      const todoListAdd = [...state.todoList, action.payload];
+      const todoListAdd = [...state.todoList, {name: action.payload, isDone: false}];
       return { ...state, todoList: todoListAdd}
+
     case 'DELETE_TODO':
       const todoListDelete = state.todoList.filter((item, index) => action.payload != index);
       return { ...state, todoList: todoListDelete}
+
     case 'CHANGE_TODO':
       const { index, value } = action.payload;
-      state.todoList[index] = value;
-      return {...state}
+      const newListChange = state.todoList.map((item, mapIndex) => {
+        if(mapIndex === index){
+          item.name = value
+        }
+        return item;
+      })
+      return {...state, todoList: newListChange}
+
+    case 'CHANGE_STATE_TODO':
+      const newList = state.todoList.map((item, index) => {
+        if (index === action.payload) {
+           item.isDone = !item.isDone
+         }
+        return item;
+      })
+      return {...state, todoList: newList };
+
     default:
       return state
   }

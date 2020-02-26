@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import List from '../components/List';
 import TodoForm from '../components/TodoForm';
-import { addTodo, deleteTodo, changeTodo } from '../actions/index';
+import { addTodo, deleteTodo, changeTodo, changeStateTodo } from '../actions/index';
 
 class App extends Component {
   render() {
-    const { todoList, addTodoAction, deleteTodoAction, changeTodoAction } = this.props;
+    const { todoList, addTodoAction, deleteTodoAction, changeTodoAction, changeStateAction } = this.props;
     return (
-      <>
+      <div className="container">
         <TodoForm addTodoAction={addTodoAction} />
-        <List todoList={todoList} deleteTodoAction={deleteTodoAction} changeTodoAction={changeTodoAction}/>
-      </>
+        <List todoList={todoList} deleteTodoAction={deleteTodoAction} changeTodoAction={changeTodoAction} changeStateTodo={changeStateAction}/>
+      </div>
     )
   }
 }
@@ -28,6 +29,7 @@ const mapDispatchToProps = dispatch => {
     addTodoAction: todo => dispatch(addTodo(todo)),
     deleteTodoAction: todoIndex => dispatch(deleteTodo(todoIndex)),
     changeTodoAction: (value, todoIndex) => dispatch(changeTodo(value, todoIndex)),
+    changeStateAction: todoIndex => dispatch(changeStateTodo(todoIndex))
   }
 }
 
